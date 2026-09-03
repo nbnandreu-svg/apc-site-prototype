@@ -615,7 +615,7 @@ function Radar() {
   const [markup, setMarkup] = useState('');
   useEffect(() => {
     const controller = new AbortController();
-    fetch(A + 'radar-animated.svg', { signal: controller.signal })
+    fetch(A + 'radar-animated.svg?v=2', { signal: controller.signal })
       .then((r) => r.text())
       .then(setMarkup)
       .catch((e) => {
@@ -632,6 +632,10 @@ function Radar() {
     doc.querySelectorAll('[data-figma-bg-blur-radius]').forEach((node) =>
       node.removeAttribute('filter'),
     );
+    doc.querySelectorAll('image[data-radar-asset]').forEach((node) => {
+      const file = node.getAttribute('data-radar-asset');
+      if (file) node.setAttribute('href', A + file);
+    });
     const sweep = doc.querySelector('#radar-sweep'),
       glow = doc.querySelector('#radar-glow');
     let frame = 0,

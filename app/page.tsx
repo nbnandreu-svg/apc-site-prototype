@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ASSETS } from '@/lib/assets';
 import { CountUp, Dashboard } from './motion';
@@ -39,10 +40,22 @@ const navigation = [
   },
 ];
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen);
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1';
+      document.head.appendChild(meta);
+    }
+    return () => document.body.classList.remove('menu-open');
+  }, [menuOpen]);
+  const closeMenu = () => setMenuOpen(false);
   return (
     <main>
       <header className="topbar wrap">
-        <a href="#" className="brand">
+        <a href="#" className="brand" onClick={closeMenu}>
           <img src={A + 'logo.png'} alt="Агропромцифра" />
         </a>
         <nav aria-label="Основная навигация">
@@ -92,7 +105,33 @@ export default function Home() {
         <a className="header-cta" href="#contact">
           Обсудить сотрудничество <span className="arrow">→</span>
         </a>
+        <button
+          type="button"
+          className={'menu-toggle' + (menuOpen ? ' open' : '')}
+          aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </header>
+      <div className={'mobile-menu' + (menuOpen ? ' open' : '')}>
+        {navigation.flatMap((item) =>
+          item.links.map(([label, href]) => (
+            <a key={href} href={href} onClick={closeMenu}>
+              {label}
+            </a>
+          )),
+        )}
+        <a href="#contact" onClick={closeMenu}>
+          Контакты
+        </a>
+        <a className="primary" href="#contact" onClick={closeMenu}>
+          Обсудить сотрудничество <span className="arrow">→</span>
+        </a>
+      </div>
       <section className="hero wrap">
         <div className="hero-copy">
           <p className="eyebrow">

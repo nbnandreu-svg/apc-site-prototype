@@ -1,8 +1,9 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { ASSETS } from '@/lib/assets';
 import { CountUp, Dashboard } from './motion';
 import Sections from './Sections';
-const A = '/assets/';
+const A = ASSETS;
 const partners = [
   ['29-image-83.png', 'ОЗК'],
   ['30-image-84.png', 'РСХБ'],

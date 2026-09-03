@@ -8,8 +8,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
+import { ASSETS } from '@/lib/assets';
 import { CountUp, usePinnedSteps } from './motion';
-const A = '/assets/';
+const A = ASSETS;
 export function Arrow() {
   return (
     <span className="arrow" aria-hidden="true">
@@ -525,51 +526,27 @@ const devSteps = [
     'Проводим приемку, обучаем пользователей, сопровождаем эксплуатацию и развиваем систему',
   ],
 ];
-const techGroups = [
-  {
-    title: 'Интерфейсы',
-    label: 'Frontend',
-    items: [
-      ['React', '44-react-2.svg'],
-      ['Vue.js', '48-vuejs-1.svg'],
-      ['TypeScript', '47-typescript-1.svg'],
-      ['JavaScript', '33-javascript-2.svg'],
-      ['HTML5', '21-html5-2.svg'],
-      ['CSS3', '07-css3-2.svg'],
-    ],
-  },
-  {
-    title: 'Серверная логика',
-    label: 'Backend',
-    items: [
-      ['Python', '43-python-2.svg'],
-      ['Java', '32-java-2.svg'],
-      ['Node.js', '38-nodejs-2.svg'],
-      ['Spring', '46-spring-1.svg'],
-    ],
-  },
-  {
-    title: 'Данные',
-    label: 'Databases',
-    items: [
-      ['PostgreSQL', '42-postgresql-1.svg'],
-      ['MySQL', '37-mysql-1.svg'],
-      ['MongoDB', '36-mongodb-1.svg'],
-      ['Redis', '45-redis-1.svg'],
-    ],
-  },
-  {
-    title: 'Инфраструктура',
-    label: 'DevOps & Cloud',
-    items: [
-      ['Docker', '08-docker-2.svg'],
-      ['Kubernetes', '34-kubernetes-1.svg'],
-      ['Linux', '35-linux-1.svg'],
-      ['Git', '13-git-2.svg'],
-      ['AWS', '06-aws-1.svg'],
-      ['Google Cloud', '14-google-cloud-2.svg'],
-    ],
-  },
+const technologies = [
+  ['Spring', '46-spring-1.svg'],
+  ['MySQL', '37-mysql-1.svg'],
+  ['Node.js', '38-nodejs-2.svg'],
+  ['PostgreSQL', '42-postgresql-1.svg'],
+  ['Python', '43-python-2.svg'],
+  ['Java', '32-java-2.svg'],
+  ['React', '44-react-2.svg'],
+  ['Redis', '45-redis-1.svg'],
+  ['Git', '13-git-2.svg'],
+  ['MongoDB', '36-mongodb-1.svg'],
+  ['TypeScript', '47-typescript-1.svg'],
+  ['Vue.js', '48-vuejs-1.svg'],
+  ['HTML5', '21-html5-2.svg'],
+  ['AWS', '06-aws-1.svg'],
+  ['CSS3', '07-css3-2.svg'],
+  ['Docker', '08-docker-2.svg'],
+  ['Google Cloud', '14-google-cloud-2.svg'],
+  ['JavaScript', '33-javascript-2.svg'],
+  ['Kubernetes', '34-kubernetes-1.svg'],
+  ['Linux', '35-linux-1.svg'],
 ];
 function Development() {
   return (
@@ -620,30 +597,14 @@ function Development() {
             </div>
           ))}
         </div>
-        <div className="technology-stack">
-          <div className="technology-heading">
-            <h3>Технологический стек</h3>
-            <span>От интерфейса до инфраструктуры</span>
-          </div>
-          <div className="technology-grid">
-            {techGroups.map((group, index) => (
-              <article className="technology-group" key={group.title}>
-                <div className="technology-group-heading">
-                  <span>0{index + 1}</span>
-                  <small>{group.label}</small>
-                </div>
-                <h4>{group.title}</h4>
-                <ul>
-                  {group.items.map(([name, file]) => (
-                    <li key={name}>
-                      <img src={A + file} alt="" />
-                      <span>{name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
+        <div
+          className="technologies"
+          role="img"
+          aria-label="Технологический стек: Spring, MySQL, Node.js, PostgreSQL, Python, Java, React, Redis, Git, MongoDB, TypeScript, Vue.js, HTML5, AWS, CSS3, Docker, Google Cloud, JavaScript, Kubernetes, Linux"
+        >
+          {technologies.map(([name, file]) => (
+            <img key={name} src={A + file} alt={name} />
+          ))}
         </div>
       </section>
     </>

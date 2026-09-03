@@ -6,6 +6,7 @@ import {
   useState,
   type CSSProperties,
 } from 'react';
+import { ASSETS } from '@/lib/assets';
 
 // Sticky sections follow native scroll. Tabs only jump to the matching offset.
 export function usePinnedSteps(count: number) {
@@ -155,7 +156,7 @@ export function Dashboard({ kind, label }: { kind: string; label: string }) {
   const [markup, setMarkup] = useState('');
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/assets/dashboard-' + kind + '.svg', { signal: controller.signal })
+    fetch(ASSETS + 'dashboard-' + kind + '.svg', { signal: controller.signal })
       .then((response) => response.text())
       .then(setMarkup)
       .catch((error) => {

@@ -99,13 +99,10 @@ export default function Home() {
             Единый центр компетенций в цифровизации агропромышленного комплекса
           </p>
           <h1>
-            Цифровизация
+            Цифровизация АПК <span>—</span>
             <br />
-            АПК <span>—</span>
             <span className="hero-accent gradient">
-              от задачи
-              <br />
-              до работающей системы
+              от задачи до работающей системы
             </span>
           </h1>
           <div className="hero-actions">

@@ -127,6 +127,11 @@
     letter-spacing: -0.034em;
     line-height: 1.08;
   }
+  .hero-accent-tail {
+    font-size: 21px;
+    padding-left: 3.2em;
+    margin-top: 0;
+  }
   .hero-actions {
     flex-direction: column;
     margin-top: 22px;
@@ -462,6 +467,9 @@
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 26px;
+  }
+  .hero-accent-tail {
+    font-size: 20px;
   }
   .hero-art {
     transform: scale(0.52);
